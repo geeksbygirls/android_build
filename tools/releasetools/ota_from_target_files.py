@@ -865,7 +865,7 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.ShowProgress(0.05, 5)
   script.WriteRawImage("/boot", "boot.img")
 
-  if os.getenv('WITH_ROOT_METHOD','rootless') == "magisk":
+  if os.getenv('WITH_ROOT_METHOD','su') == "magisk":
     if block_based:
       script.Print(" ")
       script.Print("Flashing Magisk...")
