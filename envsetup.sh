@@ -1643,6 +1643,7 @@ function mk_timer()
     fi
     echo " ####${color_reset}"
     echo
+    prebuilts/sdk/tools/jack-admin stop-server 2>&1 >/dev/null
     return $ret
 }
 
@@ -1726,5 +1727,4 @@ check_bash_version && {
 
 export ANDROID_BUILD_TOP=$(gettop)
 
-. $ANDROID_BUILD_TOP/vendor/cm/tools/rr_variant.sh && ./vendor/cm/tools/changelog.sh &&
-. vendor/cm/build/envsetup.sh
+. vendor/cm/tools/rr_variant.sh && . vendor/cm/tools/rr_root.sh && ./vendor/cm/tools/changelog.sh && . vendor/cm/build/envsetup.sh

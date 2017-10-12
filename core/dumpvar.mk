@@ -1,15 +1,17 @@
-
+DEVICE := $(CM_BUILD)
 # List of variables we want to print in the build banner.
 print_build_config_vars := \
-  RR_VERSION \
+  PLATFORM_VERSION \
+  RR_VERSION
+ifneq ($(RR_BUILDTYPE),)
+  print_build_config_vars += \
+    RR_BUILDTYPE
+endif
+print_build_config_vars += \
+  DEVICE \
   WITH_ROOT_METHOD \
-  TARGET_PRODUCT \
+  TARGET_BUILD_VARIANT \
   TARGET_ARCH \
-  TARGET_ARCH_VARIANT \
-  TARGET_CPU_VARIANT \
-  TARGET_2ND_ARCH_VARIANT \
-  TARGET_2ND_CPU_VARIANT \
-  HOST_ARCH \
   BUILD_ID \
   TARGET_GCC_VERSION \
   LLVM_RELEASE_VERSION \

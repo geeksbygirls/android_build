@@ -534,7 +534,11 @@ endif
 # To run bison from elsewhere you need to set up enviromental variable
 # BISON_PKGDATADIR.
 BISON_PKGDATADIR := $(PWD)/external/bison/data
+ifeq ($(USE_HOST_BISON),yes)
+BISON := bison
+else
 BISON := prebuilts/misc/$(BUILD_OS)-$(HOST_PREBUILT_ARCH)/bison/bison
+endif
 YACC := $(BISON) -d
 
 YASM := prebuilts/misc/$(BUILD_OS)-$(HOST_PREBUILT_ARCH)/yasm/yasm
@@ -597,7 +601,7 @@ APPEND2SIMG := $(HOST_OUT_EXECUTABLES)/append2simg
 VERITY_SIGNER := $(HOST_OUT_EXECUTABLES)/verity_signer
 BUILD_VERITY_TREE := $(HOST_OUT_EXECUTABLES)/build_verity_tree
 BOOT_SIGNER := $(HOST_OUT_EXECUTABLES)/boot_signer
-FUTILITY := prebuilts/misc/$(BUILD_OS)-$(HOST_PREBUILT_ARCH)/futility/futility
+FUTILITY := $(HOST_OUT_EXECUTABLES)/futility-host
 VBOOT_SIGNER := prebuilts/misc/scripts/vboot_signer/vboot_signer.sh
 FEC := $(HOST_OUT_EXECUTABLES)/fec
 

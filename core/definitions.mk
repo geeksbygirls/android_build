@@ -426,7 +426,7 @@ endef
 define find-subdir-assets
 $(sort $(if $(1),$(patsubst ./%,%, \
 	$(shell if [ -d $(1) ] ; then cd $(1) ; find -L ./ -not -name '.*' -and -type f -and -not -type l ; fi)), \
-	$(warning Empty argument supplied to find-subdir-assets) \
+	$(warning Empty argument supplied to find-subdir-assets in $(LOCAL_PATH)) \
 ))
 endef
 
@@ -2421,7 +2421,7 @@ endef
 
 # $(1): the package file.
 define add-dex-to-package-arg
-$(hide) find $(dir $(PRIVATE_DEX_FILE)) -maxdepth 1 -name "classes*.dex" | sort | xargs zip -qjX $(1)
+$(hide) find $(dir $(PRIVATE_DEX_FILE)) -maxdepth 1 -name "classes*.dex" | sort | xargs zip -0qjX $(1)
 endef
 
 # Add java resources added by the current module.
